@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, ThemeProvider } from "@mui/material";
+import { CssBaseline, Grid, Hidden, ThemeProvider } from "@mui/material";
 import NavBar from "./components/NavBar";
 import AboutMe from "./components/AboutMe";
 import Photo from "./components/Photo";
@@ -17,9 +17,11 @@ function App() {
                     <Grid item xs={12} md={6}>
                         <AboutMe />
                     </Grid>
-                    <Grid item xs={12} md={6} color='orange'>
-                        <Photo />
-                    </Grid>
+                    <Hidden mdDown>
+                        <Grid item xs={12} md={6}>
+                            <Photo />
+                        </Grid>
+                    </Hidden>
                     <Grid item xs={12}>
                         <Footer />
                     </Grid>

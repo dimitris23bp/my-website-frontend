@@ -19,6 +19,7 @@ const NavBar = () => {
                         sx={{
                             "&:hover": { backgroundColor: "transparent" },
                             textTransform: "none",
+                            fontSize: "1.2rem",
                         }}
                     >
                         {name}
