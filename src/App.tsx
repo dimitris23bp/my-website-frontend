@@ -1,10 +1,13 @@
-import { CssBaseline, Grid, Hidden, ThemeProvider } from "@mui/material";
-import NavBar from "./components/NavBar";
-import AboutMe from "./components/AboutMe";
-import Photo from "./components/Photo";
+import { CssBaseline, Grid, ThemeProvider } from "@mui/material";
+import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/Footer";
 import theme from "./theme";
-import BasicComponentsContainer from "./components/BasicComponentsContainer";
+import JobExperience from "./components/JobExperience";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/home/Home";
+import Github from "./components/Github";
+import Certificates from "./components/Certificates";
+import Contacts from "./components/Contacts";
 
 function App() {
     return (
@@ -13,20 +16,23 @@ function App() {
             <ThemeProvider theme={theme}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <NavBar />
+                        <Router>
+                            <NavBar />
+                            <Routes>
+                                <Route path='/' Component={Home} />
+                                <Route
+                                    path='/job-experience'
+                                    Component={JobExperience}
+                                />
+                                <Route path='/github' Component={Github} />
+                                <Route
+                                    path='/certificates'
+                                    Component={Certificates}
+                                />
+                                <Route path='/contact' Component={Contacts} />
+                            </Routes>
+                        </Router>
                     </Grid>
-                    <Grid item sm={12} md={6}>
-                        <BasicComponentsContainer>
-                            <AboutMe />
-                        </BasicComponentsContainer>
-                    </Grid>
-                    <Hidden mdDown>
-                        <Grid item md={6}>
-                            <BasicComponentsContainer>
-                                <Photo />
-                            </BasicComponentsContainer>
-                        </Grid>
-                    </Hidden>
                     <Grid item xs={12}>
                         <Footer />
                     </Grid>

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import me from "../assets/me.jpeg";
+import me from "../../assets/me.jpeg";
 
 const Photo = () => {
     return (

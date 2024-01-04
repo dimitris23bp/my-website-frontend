@@ -12,9 +12,15 @@ import {
 import logo from "../assets/logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-    const buttonNames = ["Job Experience", "Github", "Certificates", "Contact"];
+    const buttons: { [key: string]: string } = {
+        "Job Experience": "/job-experience",
+        Github: "/github",
+        Certificates: "/certificates",
+        Contact: "/contact",
+    };
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const handleOpenHamburger = (event: React.MouseEvent<HTMLElement>) => {
@@ -28,11 +34,13 @@ const NavBar = () => {
     return (
         <AppBar position='static'>
             <Toolbar sx={{ margin: "10px 0" }}>
-                <Avatar
-                    src={logo}
-                    alt='Logo'
-                    sx={{ width: 60, height: 60, marginRight: "30px" }}
-                />
+                <Link to='/'>
+                    <Avatar
+                        src={logo}
+                        alt='Logo'
+                        sx={{ width: 60, height: 60, marginRight: "30px" }}
+                    />
+                </Link>
                 <Hidden mdUp>
                     <Box sx={{ flexGrow: 1 }} />
                     <IconButton
@@ -66,17 +74,23 @@ const NavBar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleCloseHamburger}
                     >
-                        {buttonNames.map((name) => (
-                            <MenuItem onClick={handleCloseHamburger} key={name}>
+                        {Object.entries(buttons).map(([name, url]) => (
+                            <MenuItem
+                                key={name}
+                                href={url}
+                                component='a'
+                                onClick={handleCloseHamburger}
+                            >
                                 {name}
                             </MenuItem>
                         ))}
                     </Menu>
                 </Hidden>
                 <Hidden mdDown>
-                    {buttonNames.map((name) => (
+                    {Object.entries(buttons).map(([name, url]) => (
                         <Button
                             key={name}
+                            href={url}
                             color='inherit'
                             disableRipple
                             sx={{
