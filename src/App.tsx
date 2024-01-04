@@ -2,7 +2,7 @@ import { CssBaseline, Grid, ThemeProvider } from "@mui/material";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/Footer";
 import theme from "./theme";
-import JobExperience from "./components/JobExperience";
+import Experience from "./components/Experience";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Github from "./components/Github";
@@ -22,7 +22,7 @@ function App() {
                                 <Route path='/' Component={Home} />
                                 <Route
                                     path='/job-experience'
-                                    Component={JobExperience}
+                                    Component={Experience}
                                 />
                                 <Route path='/github' Component={Github} />
                                 <Route
