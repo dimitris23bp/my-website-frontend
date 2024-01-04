@@ -1,18 +1,8 @@
-import {
-    AppBar,
-    Toolbar,
-    Button,
-    Avatar,
-    IconButton,
-    Menu,
-    MenuItem,
-    Hidden,
-    Box,
-} from "@mui/material";
+import { AppBar, Toolbar, Avatar, Hidden } from "@mui/material";
 import logo from "../../assets/logo.png";
-import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import MdUpNavBar from "./MdUpNavBar";
 import { Link } from "react-router-dom";
+import MdDownNavBar from "./MdDownNavBar";
 
 const NavBar = () => {
     const buttons: { [key: string]: string } = {
@@ -20,15 +10,6 @@ const NavBar = () => {
         Github: "/github",
         Certificates: "/certificates",
         Contact: "/contact",
-    };
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
-    const handleOpenHamburger = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleCloseHamburger = () => {
-        setAnchorEl(null);
     };
 
     return (
@@ -42,67 +23,10 @@ const NavBar = () => {
                     />
                 </Link>
                 <Hidden mdUp>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <IconButton
-                        size='large'
-                        edge='start'
-                        color='inherit'
-                        aria-label='menu'
-                        onClick={handleOpenHamburger}
-                        sx={{
-                            marginRight: 2,
-                            "&:hover": {
-                                backgroundColor: "transparent",
-                            },
-                            textTransform: "none",
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Menu
-                        id='menu-appbar'
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: "top",
-                            horizontal: "right",
-                        }}
-                        open={Boolean(anchorEl)}
-                        onClose={handleCloseHamburger}
-                    >
-                        {Object.entries(buttons).map(([name, url]) => (
-                            <MenuItem
-                                key={name}
-                                href={url}
-                                component='a'
-                                onClick={handleCloseHamburger}
-                            >
-                                {name}
-                            </MenuItem>
-                        ))}
-                    </Menu>
+                    <MdDownNavBar buttons={buttons} />
                 </Hidden>
                 <Hidden mdDown>
-                    {Object.entries(buttons).map(([name, url]) => (
-                        <Button
-                            key={name}
-                            href={url}
-                            color='inherit'
-                            disableRipple
-                            sx={{
-                                paddingX: "20px",
-                                "&:hover": { backgroundColor: "transparent" },
-                                textTransform: "none",
-                                fontSize: "1.2rem",
-                            }}
-                        >
-                            {name}
-                        </Button>
-                    ))}
+                    <MdUpNavBar buttons={buttons} />
                 </Hidden>
             </Toolbar>
         </AppBar>
