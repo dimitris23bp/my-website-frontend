@@ -6,7 +6,7 @@ import Experience from "./components/Experience";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Github from "./components/Github";
-import Certificates from "./components/Certificates";
+import Certificates from "./components/certificates_/Certificates";
 import Contacts from "./components/Contacts";
 
 function App() {

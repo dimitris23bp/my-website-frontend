@@ -8,6 +8,7 @@ const Experience = () => {
             <Chrono
                 hideControls
                 scrollable
+                mediaSettings={{ align: "right", fit: "contain" }}
                 items={experiences}
                 mode='VERTICAL_ALTERNATING'
                 theme={{

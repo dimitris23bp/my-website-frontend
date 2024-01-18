@@ -4,7 +4,7 @@ interface Props {
 }
 const BasicComponentsContainer = ({ children }: Props) => {
     return (
-        <Box paddingX={7} paddingY={5}>
+        <Box paddingX={3} paddingY={5}>
             {children}
         </Box>
     );
